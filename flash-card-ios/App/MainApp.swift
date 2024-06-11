@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct flash_card_iosApp: App {
+struct MainApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
