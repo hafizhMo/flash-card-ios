@@ -9,9 +9,26 @@ import SwiftUI
 
 @main
 struct MainApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+  @ObservedObject var router = Router()
+  
+  var body: some Scene {
+    WindowGroup {
+      NavigationStack(path: $router.navPath) {
+        PlayingView()
+          .navigationDestination(for: Router.Destination.self) { destination in
+            switch destination {
+            case .editCard:
+              EditCardView()
+            case .editDeck:
+              EditDeckView()
+            case .home:
+              HomeView()
+            case .playing:
+              PlayingView()
+            }
+          }
+      }
+      .environmentObject(router)
     }
+  }
 }
