@@ -6,18 +6,15 @@
 //
 
 import SwiftUI
-
-struct Goal: Hashable, Identifiable {
-  var name: String
-  var id: String { name }
-}
+import SwiftData
 
 struct EditDeckView: View {
+  @Environment(\.modelContext) private var modelContext
   @EnvironmentObject private var router: Router
   @State private var name: String = ""
-  
-  let allGoals: [Goal] = [Goal(name: "Learn Japanese"), Goal(name: "Learn SwiftUI"), Goal(name: "Learn Serverless with Swift")]
-  @State private var selectedCards: Set<Goal> = []
+
+  @State private var selectedSpells: [Spell] = []
+  @Query private var spells: [Spell]
   
   var body: some View {
     Form {
@@ -32,9 +29,9 @@ struct EditDeckView: View {
       
       // Spell section
       Section {
-        MultiSelector(label: Text("Select some spell"), options: allGoals, optionToString: { $0.name }, selected: $selectedCards)
+        MultiSelector(label: Text("Select some spell"), options: spells, optionToString: { $0.name }, selected: $selectedSpells)
         
-        ForEach(selectedCards.sorted(by: { $0.name < $1.name }), id: \.self) { i in
+        ForEach(selectedSpells.sorted(by: { $0.name < $1.name }), id: \.self) { i in
           Text("• \(i.name)")
         }
         .onDelete(perform: deleteReferences)
@@ -51,7 +48,7 @@ struct EditDeckView: View {
             .font(.system(size: 15, weight: .medium))
             .textCase(.none)
           Spacer()
-          Text("Total: \(selectedCards.count)")
+          Text("Total: \(selectedSpells.count)")
             .font(.system(size: 15, weight: .regular))
             .textCase(.none)
         }
@@ -86,7 +83,11 @@ struct EditDeckView: View {
   }
   
   private func saveDeck() {
-    
+    let deck = Deck(name: name)
+    deck.spells.append(contentsOf: Array(selectedSpells))
+    modelContext.insert(deck)
+    name = ""
+    selectedSpells = []
   }
   
   private func deleteReferences(_ indexSet: IndexSet) {

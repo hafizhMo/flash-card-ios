@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MainApp: App {
@@ -24,11 +25,15 @@ struct MainApp: App {
             case .home:
               HomeView()
             case .playing:
-              PlayingView()
+//              PlayingView()
+              ListDeckView()
+            case .listDeck:
+              ListDeckView()
             }
           }
       }
       .environmentObject(router)
+      .modelContainer(for: Deck.self)
     }
   }
 }

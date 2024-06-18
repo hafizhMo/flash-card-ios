@@ -8,12 +8,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PlayingView: View {
   @EnvironmentObject private var router: Router
   @State private var flipped = false
   
-  @State private var cards: [String] = ["Tess 1", "2222", "3kjasd"].reversed()
+  @Query private var spells: [Spell]
+  @Query private var decks: [Deck]
   
   var body: some View {
     VStack(alignment: .center) {
@@ -23,9 +25,15 @@ struct PlayingView: View {
         .font(.system(size: 24, weight: .heavy))
         .padding(.bottom, 30)
       
+      HStack(spacing: 20) {
+        ForEach(decks, id:\.self) { deck in
+          Button(deck.name) {}
+        }
+      }
+      
       ZStack {
-        ForEach(cards, id: \.self) { card in
-          SwipeCard(frontLabel: card, backLabel: "Back sided")
+        ForEach(spells, id: \.self) { spell in
+          SwipeCard(frontLabel: spell.name, backLabel: spell.detail)
         }
       }
       
@@ -36,7 +44,7 @@ struct PlayingView: View {
       
       HStack(spacing: 30) {
         Button(action: {
-          
+          router.navigate(to: .listDeck)
         }, label: {
           Image(systemName: "numbersign")
             .padding()
@@ -59,7 +67,7 @@ struct PlayingView: View {
         })
         
         Button(action: {
-          cards.append(contentsOf: ["qqwww", "aasssssss", "ppoopoppp"])
+          
         }, label: {
           Image(systemName: "shuffle")
             .padding()
@@ -76,6 +84,6 @@ struct PlayingView: View {
   }
 }
 
-#Preview {
-  PlayingView()
-}
+//#Preview {
+//  PlayingView()
+//}

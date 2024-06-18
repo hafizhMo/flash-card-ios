@@ -12,7 +12,7 @@ struct MultiSelector<LabelView: View, Selectable: Identifiable & Hashable>: View
   let options: [Selectable]
   let optionToString: (Selectable) -> String
   
-  var selected: Binding<Set<Selectable>>
+  var selected: Binding<[Selectable]>
   
   var body: some View {
     NavigationLink {
@@ -31,7 +31,7 @@ struct MultiSelectionView<Selectable: Identifiable & Hashable>: View {
   let options: [Selectable]
   let optionToString: (Selectable) -> String
   
-  @Binding var selected: Set<Selectable>
+  @Binding var selected: [Selectable]
   
   var body: some View {
     List {
@@ -56,7 +56,7 @@ struct MultiSelectionView<Selectable: Identifiable & Hashable>: View {
     if let existingIndex = selected.firstIndex(where: { $0.id == selectable.id }) {
       selected.remove(at: existingIndex)
     } else {
-      selected.insert(selectable)
+      selected.insert(selectable, at: selected.count)
     }
   }
 }

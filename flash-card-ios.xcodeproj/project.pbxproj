@@ -20,6 +20,9 @@
 		FBD01B692C19C4A400C57D89 /* FlipCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B682C19C4A400C57D89 /* FlipCard.swift */; };
 		FBD01B6B2C1BF45300C57D89 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6A2C1BF45300C57D89 /* CardView.swift */; };
 		FBD01B6D2C1BF88100C57D89 /* SwipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6C2C1BF88100C57D89 /* SwipeCard.swift */; };
+		FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6F2C1C63E000C57D89 /* Spell.swift */; };
+		FBD01B722C1C643900C57D89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B712C1C643900C57D89 /* Deck.swift */; };
+		FBD01B742C1C688E00C57D89 /* ListDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B732C1C688E00C57D89 /* ListDeckView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		FBD01B682C19C4A400C57D89 /* FlipCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipCard.swift; sourceTree = "<group>"; };
 		FBD01B6A2C1BF45300C57D89 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		FBD01B6C2C1BF88100C57D89 /* SwipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCard.swift; sourceTree = "<group>"; };
+		FBD01B6F2C1C63E000C57D89 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
+		FBD01B712C1C643900C57D89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
+		FBD01B732C1C688E00C57D89 /* ListDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDeckView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +75,11 @@
 		FB05658D2C1848710026DF3A /* flash-card-ios */ = {
 			isa = PBXGroup;
 			children = (
-				FB0565AB2C185FC30026DF3A /* Utils */,
 				FB05659C2C1849140026DF3A /* App */,
+				FBD01B6E2C1C63D400C57D89 /* Data */,
 				FB05659E2C1849530026DF3A /* Features */,
 				FB05659D2C18491E0026DF3A /* Resources */,
+				FB0565AB2C185FC30026DF3A /* Utils */,
 			);
 			path = "flash-card-ios";
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				FB05659F2C184B590026DF3A /* EditDeckView.swift */,
+				FBD01B732C1C688E00C57D89 /* ListDeckView.swift */,
 			);
 			path = Deck;
 			sourceTree = "<group>";
@@ -172,6 +180,15 @@
 				FBD01B6C2C1BF88100C57D89 /* SwipeCard.swift */,
 			);
 			path = Card;
+			sourceTree = "<group>";
+		};
+		FBD01B6E2C1C63D400C57D89 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FBD01B6F2C1C63E000C57D89 /* Spell.swift */,
+				FBD01B712C1C643900C57D89 /* Deck.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -251,8 +268,11 @@
 				FB05658F2C1848710026DF3A /* MainApp.swift in Sources */,
 				FBD01B6B2C1BF45300C57D89 /* CardView.swift in Sources */,
 				FB0565AD2C185FCE0026DF3A /* Router.swift in Sources */,
+				FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */,
 				FB0565AA2C184BCA0026DF3A /* PlayingView.swift in Sources */,
+				FBD01B722C1C643900C57D89 /* Deck.swift in Sources */,
 				FB0565B52C1982DC0026DF3A /* MultiSelector.swift in Sources */,
+				FBD01B742C1C688E00C57D89 /* ListDeckView.swift in Sources */,
 				FB0565A72C184BAE0026DF3A /* HomeView.swift in Sources */,
 				FB0565A02C184B590026DF3A /* EditDeckView.swift in Sources */,
 			);

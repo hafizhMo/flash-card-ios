@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct EditCardView: View {
+  @Environment(\.modelContext) private var modelContext
   @EnvironmentObject private var router: Router
   @State private var name: String = ""
+  @State private var detail: String = ""
+  @State private var notes: String = ""
   
   var body: some View {
     Form {
       Section {
         TextField("Your magic spell", text: $name)
-        TextField("What the spell for?", text: $name, axis: .vertical)
+        TextField("What the spell for?", text: $detail, axis: .vertical)
       } header: {
         Text("About spell 🪄")
           .font(.system(size: 15, weight: .medium))
@@ -23,7 +26,7 @@ struct EditCardView: View {
       }
       
       Section {
-        TextField("Explain your spell about..", text: $name, axis: .vertical)
+        TextField("Explain your spell about..", text: $notes, axis: .vertical)
           .lineLimit(10, reservesSpace: true)
         
         HStack {
@@ -66,9 +69,9 @@ struct EditCardView: View {
       
       ToolbarItem(placement: .topBarTrailing) {
         if name.isEmpty {
-          Button("Save", action: uploadImage)
+          Button("Save", action: addSpell)
         } else {
-          Button("Edit", action: uploadImage)
+          Button("Edit", action: addSpell)
         }
       }
     }
@@ -77,6 +80,14 @@ struct EditCardView: View {
   
   private func uploadImage() {
     
+  }
+  
+  private func addSpell() {
+    let spell = Spell(name: name, detail: detail, notes: notes)
+    modelContext.insert(spell)
+    name = ""
+    detail = ""
+    notes = ""
   }
 }
 

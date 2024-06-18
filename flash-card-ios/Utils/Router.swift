@@ -20,6 +20,7 @@ final class Router: ObservableObject {
     case editCard
     case home
     case playing
+    case listDeck
   }
   
   @Published var navPath = NavigationPath()

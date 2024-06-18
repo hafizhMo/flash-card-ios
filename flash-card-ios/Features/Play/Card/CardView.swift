@@ -23,6 +23,8 @@ struct CardView: View {
         .font(.system(size: 20, weight: .semibold))
         .foregroundColor(textColor)
         .bold()
+        .padding(.horizontal)
+        .frame(width: 320)
     }
   }
 }
