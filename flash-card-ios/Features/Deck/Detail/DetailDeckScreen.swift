@@ -15,12 +15,33 @@ struct DetailDeckScreen: View {
   
   @State private var state: DetailState = .detail
   @State private var name = ""
+  @State private var selectedSpells: Set<Spell> = []
   
   var body: some View {
     Form {
       Section {
         TextField("A Name", text: $name)
           .disabled(state == .detail)
+      }
+      
+      Section("Spell(s)") {
+        if state != .detail {
+          NavigationLink("Select some spell") {
+            SelectSpellView(selectedSpells: $selectedSpells)
+          }
+        } else {
+          if selectedSpells.isEmpty {
+            HStack {
+              Spacer()
+              Text("No spell yet.").foregroundStyle(.tertiary)
+              Spacer()
+            }
+          }
+        }
+        
+        ForEach(selectedSpells.sorted(by: { $0.name > $1.name }), id:\.self) { spell in
+          Text(spell.name)
+        }
       }
       
       if state == .edit {
@@ -57,19 +78,31 @@ struct DetailDeckScreen: View {
   }
   
   private func createDeck() {
-    let newDeck = Deck(name: name)
+    let newDeck = Deck(name: name, spells: Array(selectedSpells))
     modelContext.insert(newDeck)
     
     name = ""
+    selectedSpells = []
+    deck.spells = []
   }
   
   private func editDeck() {
     deck.name = name
+    deck.spells = Array(selectedSpells)
     state = .detail
   }
   
   private func loadDeck() {
-    name = deck.name
+    if name.isEmpty {
+      name = deck.name
+    }
+    
+    if selectedSpells.isEmpty {
+      for (_, spell) in deck.spells.enumerated() {
+        selectedSpells.insert(spell)
+      }
+    }
+
     if name.isEmpty {
       state = .create
     }

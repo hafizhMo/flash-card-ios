@@ -10,7 +10,7 @@ import SwiftData
 @Model
 class Deck {
   var name: String
-  var spells: [Spell]
+  var spells: [Spell] = []
   
   init(name: String = "", spells: [Spell] = []) {
     self.name = name
