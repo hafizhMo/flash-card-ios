@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainScreen: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  @State var path = NavigationPath()
+  @Query private var allSpell: [Spell]
+  
+  var body: some View {
+    NavigationStack(path: $path) {
+      VStack {
+        if allSpell.first != nil {
+          AllSpellScreen(path: $path)
+        } else {
+          EmptySpellScreen(path: $path)
+        }
+      }
+      .navigationDestination(for: Spell.self) { spell in
+        DetailSpellScreen(spell: spell, path: $path)
+      }
     }
-}
-
-#Preview {
-    MainScreen()
+  }
 }

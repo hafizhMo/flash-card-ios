@@ -11,6 +11,9 @@
 		FB0565932C1848730026DF3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0565922C1848730026DF3A /* Assets.xcassets */; };
 		FB0565962C1848730026DF3A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FB0565952C1848730026DF3A /* Preview Assets.xcassets */; };
 		FB508E9D2C2D511A004B28E3 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB508E9C2C2D511A004B28E3 /* MainScreen.swift */; };
+		FB508EA12C2D5535004B28E3 /* DetailSpellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB508EA02C2D5535004B28E3 /* DetailSpellScreen.swift */; };
+		FB508EA32C2D6963004B28E3 /* AllSpellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB508EA22C2D6963004B28E3 /* AllSpellScreen.swift */; };
+		FB508EA52C2D6A17004B28E3 /* EmptySpellScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB508EA42C2D6A17004B28E3 /* EmptySpellScreen.swift */; };
 		FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6F2C1C63E000C57D89 /* Spell.swift */; };
 		FBD01B722C1C643900C57D89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B712C1C643900C57D89 /* Deck.swift */; };
 /* End PBXBuildFile section */
@@ -21,6 +24,9 @@
 		FB0565922C1848730026DF3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB0565952C1848730026DF3A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FB508E9C2C2D511A004B28E3 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		FB508EA02C2D5535004B28E3 /* DetailSpellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailSpellScreen.swift; sourceTree = "<group>"; };
+		FB508EA22C2D6963004B28E3 /* AllSpellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllSpellScreen.swift; sourceTree = "<group>"; };
+		FB508EA42C2D6A17004B28E3 /* EmptySpellScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySpellScreen.swift; sourceTree = "<group>"; };
 		FBD01B6F2C1C63E000C57D89 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		FBD01B712C1C643900C57D89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -55,6 +61,7 @@
 		FB05658D2C1848710026DF3A /* flash-card-ios */ = {
 			isa = PBXGroup;
 			children = (
+				FB508E9E2C2D5513004B28E3 /* Features */,
 				FB05659C2C1849140026DF3A /* App */,
 				FBD01B6E2C1C63D400C57D89 /* Data */,
 				FB05659D2C18491E0026DF3A /* Resources */,
@@ -86,6 +93,24 @@
 				FB0565942C1848730026DF3A /* Preview Content */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		FB508E9E2C2D5513004B28E3 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				FB508E9F2C2D551D004B28E3 /* Spell */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		FB508E9F2C2D551D004B28E3 /* Spell */ = {
+			isa = PBXGroup;
+			children = (
+				FB508EA02C2D5535004B28E3 /* DetailSpellScreen.swift */,
+				FB508EA22C2D6963004B28E3 /* AllSpellScreen.swift */,
+				FB508EA42C2D6A17004B28E3 /* EmptySpellScreen.swift */,
+			);
+			path = Spell;
 			sourceTree = "<group>";
 		};
 		FBD01B6E2C1C63D400C57D89 /* Data */ = {
@@ -167,9 +192,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB508EA52C2D6A17004B28E3 /* EmptySpellScreen.swift in Sources */,
 				FB05658F2C1848710026DF3A /* MainApp.swift in Sources */,
+				FB508EA12C2D5535004B28E3 /* DetailSpellScreen.swift in Sources */,
 				FB508E9D2C2D511A004B28E3 /* MainScreen.swift in Sources */,
 				FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */,
+				FB508EA32C2D6963004B28E3 /* AllSpellScreen.swift in Sources */,
 				FBD01B722C1C643900C57D89 /* Deck.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

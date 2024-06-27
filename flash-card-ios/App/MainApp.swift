@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MainApp: App {
@@ -13,6 +14,7 @@ struct MainApp: App {
   var body: some Scene {
     WindowGroup {
       MainScreen()
+        .modelContainer(for: Spell.self)
     }
   }
 }

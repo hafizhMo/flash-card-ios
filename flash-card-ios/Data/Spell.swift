@@ -14,7 +14,7 @@ class Spell {
   var notes: String
   @Relationship(inverse: \Deck.spells) var decks: [Deck]
   
-  init(name: String, detail: String, notes: String, decks: [Deck] = []) {
+  init(name: String = "", detail: String = "", notes: String = "", decks: [Deck] = []) {
     self.name = name
     self.detail = detail
     self.notes = notes
