@@ -12,7 +12,7 @@ class Deck {
   var name: String
   var spells: [Spell]
   
-  init(name: String, spells: [Spell] = []) {
+  init(name: String = "", spells: [Spell] = []) {
     self.name = name
     self.spells = spells
   }

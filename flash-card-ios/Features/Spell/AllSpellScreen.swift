@@ -28,7 +28,6 @@ struct AllSpellScreen: View {
       }
       .padding()
     }
-    .navigationTitle("All Spell")
   }
   
   func deleteSpell(at offsets: IndexSet) {

@@ -14,7 +14,7 @@ struct MainApp: App {
   var body: some Scene {
     WindowGroup {
       MainScreen()
-        .modelContainer(for: Spell.self)
+        .modelContainer(for: Deck.self)
     }
   }
 }

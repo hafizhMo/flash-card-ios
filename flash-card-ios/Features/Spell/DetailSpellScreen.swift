@@ -40,13 +40,15 @@ struct DetailSpellScreen: View {
           .disabled(state == .detail)
       }
       
-      HStack {
-        Spacer()
-        Button("Delete", role: .destructive) {
-          modelContext.delete(spell)
-          path.removeLast()
+      if state == .edit {
+        HStack {
+          Spacer()
+          Button("Delete", role: .destructive) {
+            modelContext.delete(spell)
+            path.removeLast()
+          }
+          Spacer()
         }
-        Spacer()
       }
     }
     .navigationTitle("\(state.rawValue) Spell")
