@@ -18,6 +18,9 @@
 		FB508EAA2C2D81C2004B28E3 /* EmptyDeckScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB508EA92C2D81C2004B28E3 /* EmptyDeckScreen.swift */; };
 		FB508EAC2C2D8263004B28E3 /* DetailDeckScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB508EAB2C2D8263004B28E3 /* DetailDeckScreen.swift */; };
 		FB508EAF2C2D9B02004B28E3 /* SelectSpellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB508EAE2C2D9B02004B28E3 /* SelectSpellView.swift */; };
+		FB57F0612C31B2C800DEF4A0 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57F0602C31B2C800DEF4A0 /* HomeScreen.swift */; };
+		FB57F0632C31B6F700DEF4A0 /* SelectDeckScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57F0622C31B6F700DEF4A0 /* SelectDeckScreen.swift */; };
+		FB57F0652C31B91B00DEF4A0 /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57F0642C31B91B00DEF4A0 /* CardComponent.swift */; };
 		FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6F2C1C63E000C57D89 /* Spell.swift */; };
 		FBD01B722C1C643900C57D89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B712C1C643900C57D89 /* Deck.swift */; };
 /* End PBXBuildFile section */
@@ -35,6 +38,9 @@
 		FB508EA92C2D81C2004B28E3 /* EmptyDeckScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDeckScreen.swift; sourceTree = "<group>"; };
 		FB508EAB2C2D8263004B28E3 /* DetailDeckScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDeckScreen.swift; sourceTree = "<group>"; };
 		FB508EAE2C2D9B02004B28E3 /* SelectSpellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSpellView.swift; sourceTree = "<group>"; };
+		FB57F0602C31B2C800DEF4A0 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		FB57F0622C31B6F700DEF4A0 /* SelectDeckScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeckScreen.swift; sourceTree = "<group>"; };
+		FB57F0642C31B91B00DEF4A0 /* CardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
 		FBD01B6F2C1C63E000C57D89 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		FBD01B712C1C643900C57D89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +114,8 @@
 			children = (
 				FB508EA62C2D810C004B28E3 /* Deck */,
 				FB508E9F2C2D551D004B28E3 /* Spell */,
+				FB57F0602C31B2C800DEF4A0 /* HomeScreen.swift */,
+				FB57F0642C31B91B00DEF4A0 /* CardComponent.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -128,6 +136,7 @@
 				FB508EAD2C2D9ACB004B28E3 /* Detail */,
 				FB508EA72C2D812D004B28E3 /* AllDeckScreen.swift */,
 				FB508EA92C2D81C2004B28E3 /* EmptyDeckScreen.swift */,
+				FB57F0622C31B6F700DEF4A0 /* SelectDeckScreen.swift */,
 			);
 			path = Deck;
 			sourceTree = "<group>";
@@ -220,14 +229,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB57F0652C31B91B00DEF4A0 /* CardComponent.swift in Sources */,
 				FB508EA52C2D6A17004B28E3 /* EmptySpellScreen.swift in Sources */,
 				FB508EAC2C2D8263004B28E3 /* DetailDeckScreen.swift in Sources */,
 				FB05658F2C1848710026DF3A /* MainApp.swift in Sources */,
 				FB508EAA2C2D81C2004B28E3 /* EmptyDeckScreen.swift in Sources */,
+				FB57F0632C31B6F700DEF4A0 /* SelectDeckScreen.swift in Sources */,
 				FB508EA12C2D5535004B28E3 /* DetailSpellScreen.swift in Sources */,
 				FB508E9D2C2D511A004B28E3 /* MainScreen.swift in Sources */,
 				FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */,
 				FB508EA32C2D6963004B28E3 /* AllSpellScreen.swift in Sources */,
+				FB57F0612C31B2C800DEF4A0 /* HomeScreen.swift in Sources */,
 				FB508EA82C2D812D004B28E3 /* AllDeckScreen.swift in Sources */,
 				FB508EAF2C2D9B02004B28E3 /* SelectSpellView.swift in Sources */,
 				FBD01B722C1C643900C57D89 /* Deck.swift in Sources */,

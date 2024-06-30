@@ -17,24 +17,29 @@ struct MainScreen: View {
   var body: some View {
     NavigationStack(path: $path) {
       VStack {
-        Picker("Content", selection: $selected) {
-          Text("All Deck").tag(0)
-          Text("All Spell").tag(1)
-        }
-        .pickerStyle(.segmented)
-        
-        if selected == 0 {
-          if allDeck.first != nil {
-            AllDeckScreen(path: $path)
-          } else {
-            EmptyDeckScreen(path: $path)
-          }
+//        Picker("Content", selection: $selected) {
+//          Text("All Deck").tag(0)
+//          Text("All Spell").tag(1)
+//        }
+//        .pickerStyle(.segmented)
+//        
+//        if selected == 0 {
+//          if allDeck.first != nil {
+//            AllDeckScreen(path: $path)
+//          } else {
+//            EmptyDeckScreen(path: $path)
+//          }
+//        } else {
+//          if allSpell.first != nil {
+//            AllSpellScreen(path: $path)
+//          } else {
+//            EmptySpellScreen(path: $path)
+//          }
+//        }
+        if let deck = allDeck.first {
+          HomeScreen(deck: deck, path: $path)
         } else {
-          if allSpell.first != nil {
-            AllSpellScreen(path: $path)
-          } else {
-            EmptySpellScreen(path: $path)
-          }
+          EmptyDeckScreen(path: $path)
         }
       }
       .padding()
