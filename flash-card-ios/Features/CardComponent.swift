@@ -9,18 +9,18 @@ import SwiftUI
 
 struct CardComponent: View {
   @Binding var spells: [Spell]
-  @Binding var reset: Bool
+  @Binding var state: CardState
   
   var body: some View {
     ZStack {
       Button("Reset") {
         withAnimation {
-          reset = true
+          state = .reset
         }
       }
       
-      ForEach(spells, id: \.self) { spell in
-        SwipeCard(frontLabel: spell.name, backLabel: spell.detail, reset: $reset)
+      ForEach(Array(spells.enumerated()), id: \.element) { i, spell in
+        SwipeCard(index: i, frontLabel: spell.name, backLabel: spell.detail, state: $state)
       }
       
     }
@@ -30,9 +30,10 @@ struct CardComponent: View {
 
 struct SwipeCard: View {
   @State private var offset = CGSize.zero
+  var index: Int
   var frontLabel: String
   var backLabel: String
-  @Binding var reset: Bool
+  @Binding var state: CardState
   
   var body: some View {
     FlipCard(front: frontLabel, back: backLabel)
@@ -53,9 +54,23 @@ struct SwipeCard: View {
             }
           }
       )
-      .onChange(of: reset) { oldValue, newValue in
-        offset = .zero
-        reset = false
+      .onChange(of: state) { oldValue, newValue in
+        switch newValue {
+        case .idle:
+          return
+        case .reset:
+          withAnimation(.easeInOut(duration: 0.4)) {
+            offset = .zero
+          }
+        case .shuffle:
+          withAnimation(.easeInOut(duration: 0.2)) {
+            offset = CGSize(width: (index % 2 == 0) ? 500 : -500, height: 0)
+          }
+          withAnimation(.easeInOut(duration: 0.8)) {
+            offset = .zero
+          }
+        }
+        state = .idle
       }
   }
   

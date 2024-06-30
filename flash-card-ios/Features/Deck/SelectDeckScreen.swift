@@ -12,7 +12,7 @@ struct SelectDeckScreen: View {
   @Query private var allDeck: [Deck]
   
   @Binding var selected: Deck
-  @Binding var reset: Bool
+  @Binding var state: CardState
   @Binding var path : NavigationPath
   
   var body: some View {
@@ -26,7 +26,7 @@ struct SelectDeckScreen: View {
           }
         }
         .onTapGesture {
-          reset = true
+          state = .reset
           selected = deck
           path.removeLast()
         }

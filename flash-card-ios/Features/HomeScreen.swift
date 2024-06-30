@@ -7,17 +7,30 @@
 
 import SwiftUI
 
+enum CardState {
+  case idle
+  case reset
+  case shuffle
+}
+
 struct HomeScreen: View {
   @Bindable var deck: Deck
   @Binding var path : NavigationPath
   @State private var selected: Deck = Deck()
-  @State private var reset = false
+  @State private var state: CardState = .idle
   
   var body: some View {
     VStack {
       Spacer()
-      CardComponent(spells: $selected.spells, reset: $reset)
+      CardComponent(spells: $selected.spells, state: $state)
       Spacer()
+      
+      Button("shuffle") {
+        state = .shuffle
+        withAnimation(.easeInOut(duration: 0.4)){
+          selected.spells.shuffle()
+        }
+      }
       
       Button("Pick another deck") {
         path.append("pick")
@@ -32,7 +45,7 @@ struct HomeScreen: View {
       }
     }
     .navigationDestination(for: String.self) { _ in
-      SelectDeckScreen(selected: $selected, reset: $reset, path: $path)
+      SelectDeckScreen(selected: $selected, state: $state, path: $path)
     }
     .navigationDestination(for: Int.self, destination: { code in
       if code == 0 {
