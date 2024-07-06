@@ -24,6 +24,7 @@
 		FB9B57AD2C38FF4900CE6635 /* CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57AC2C38FF4900CE6635 /* CardState.swift */; };
 		FB9B57AF2C38FF6A00CE6635 /* DetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57AE2C38FF6A00CE6635 /* DetailState.swift */; };
 		FB9B57B22C39046800CE6635 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57B12C39046800CE6635 /* Colors.swift */; };
+		FB9B57B72C393BC700CE6635 /* ManageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57B62C393BC700CE6635 /* ManageScreen.swift */; };
 		FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6F2C1C63E000C57D89 /* Spell.swift */; };
 		FBD01B722C1C643900C57D89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B712C1C643900C57D89 /* Deck.swift */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,7 @@
 		FB9B57AC2C38FF4900CE6635 /* CardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardState.swift; sourceTree = "<group>"; };
 		FB9B57AE2C38FF6A00CE6635 /* DetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailState.swift; sourceTree = "<group>"; };
 		FB9B57B12C39046800CE6635 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FB9B57B62C393BC700CE6635 /* ManageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageScreen.swift; sourceTree = "<group>"; };
 		FBD01B6F2C1C63E000C57D89 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		FBD01B712C1C643900C57D89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,6 +125,7 @@
 				FB508E9F2C2D551D004B28E3 /* Spell */,
 				FB57F0602C31B2C800DEF4A0 /* HomeScreen.swift */,
 				FB57F0642C31B91B00DEF4A0 /* CardComponent.swift */,
+				FB9B57B62C393BC700CE6635 /* ManageScreen.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				FB9B57B22C39046800CE6635 /* Colors.swift in Sources */,
 				FB508EAC2C2D8263004B28E3 /* DetailDeckScreen.swift in Sources */,
 				FB05658F2C1848710026DF3A /* MainApp.swift in Sources */,
+				FB9B57B72C393BC700CE6635 /* ManageScreen.swift in Sources */,
 				FB508EAA2C2D81C2004B28E3 /* EmptyDeckScreen.swift in Sources */,
 				FB57F0632C31B6F700DEF4A0 /* SelectDeckScreen.swift in Sources */,
 				FB9B57AD2C38FF4900CE6635 /* CardState.swift in Sources */,

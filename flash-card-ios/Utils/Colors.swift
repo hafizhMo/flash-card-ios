@@ -50,6 +50,8 @@ extension Color {
   static let primaryButtonBackground = accent_400
   static let secondaryButtonBackground = accent_100
   
+  static let manageToolbar = Color(hex: "F2F2F7")
+  
   private static let neutral_0 = Color(hex: "ffffff")
   private static let neutral_50 = Color(hex: "fafafa")
   private static let neutral_100 = Color(hex: "f5f5f5")

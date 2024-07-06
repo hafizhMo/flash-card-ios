@@ -15,6 +15,7 @@ struct HomeScreen: View {
   @AppStorage("selectedDeck") private var selectedDeck = ""
   @Query private var allDeck: [Deck]
   @State private var selected = Deck()
+  @State private var position = false
   
   var body: some View {
     VStack {
@@ -72,22 +73,18 @@ struct HomeScreen: View {
     .confirmationDialog("", isPresented: $isPresented, titleVisibility: .hidden, actions: {
       Button("Manage deck") {
         path.append(0)
+        position = true
       }
       Button("Manage spell") {
         path.append(1)
+        position = false
       }
     })
     .navigationDestination(for: String.self) { _ in
       SelectDeckScreen(state: $state, path: $path)
     }
     .navigationDestination(for: Int.self, destination: { code in
-      if code == 0 {
-        AllDeckScreen(path: $path)
-      }
-      
-      if code == 1{
-        AllSpellScreen(path: $path)
-      }
+      ManageScreen(toggle: $position, path: $path)
     })
     .onAppear {
       if let selectedDeck = allDeck.first(where: { $0.name == selectedDeck }) {
