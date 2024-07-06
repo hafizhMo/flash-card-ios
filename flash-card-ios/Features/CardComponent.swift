@@ -13,10 +13,16 @@ struct CardComponent: View {
   
   var body: some View {
     ZStack {
-      Button("Reset") {
+      Button {
         withAnimation {
           state = .reset
         }
+      } label: {
+        VStack {
+          Image(systemName: "arrow.clockwise")
+          Text("Reset")
+        }
+        .foregroundColor(.secondaryButtonLabel)
       }
       
       ForEach(Array(spells.enumerated()), id: \.element) { i, spell in
@@ -66,7 +72,7 @@ struct SwipeCard: View {
           withAnimation(.easeInOut(duration: 0.2)) {
             offset = CGSize(width: (index % 2 == 0) ? 500 : -500, height: 0)
           }
-          withAnimation(.easeInOut(duration: 0.8)) {
+          withAnimation(.easeInOut(duration: 0.8 + Double(index) / 3.5)) {
             offset = .zero
           }
         }
@@ -101,10 +107,10 @@ struct FlipCard: View {
     
     return VStack {
       ZStack {
-        CardView(label: front)
+        CardView(label: front, isWithNote: true, backgroundColor: .primaryCardBackground)
           .flipRotate(flipDegrees).opacity(flipped ? 0.0 : 1.0)
         
-        CardView(label: back, textColor: .white, backgroundColor: .gray)
+        CardView(label: back, textColor: .white, backgroundColor: .secondaryCardBackground)
           .flipRotate(-180 + flipDegrees).opacity(flipped ? 1.0 : 0.0)
       }
       .onTapGesture {
@@ -119,23 +125,38 @@ struct FlipCard: View {
 
 struct CardView: View {
   var label: String
+  var isWithNote = false
   var textColor: Color = .black.opacity(0.7)
   var backgroundColor: Color = .white
   
   var body: some View {
     ZStack {
-      Rectangle()
+      RoundedRectangle(cornerRadius: 20)
         .frame(width: 320, height: 320)
         .cornerRadius(12)
         .foregroundColor(backgroundColor)
-        .shadow(color: .gray.opacity(0.3), radius: 20)
-      Text(label)
-        .font(.system(size: 20, weight: .semibold))
-        .foregroundColor(textColor)
-        .bold()
-        .padding(.horizontal)
-        .frame(width: 320)
+        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.secondaryBackground, lineWidth: 2))
+      
+      VStack {
+        Spacer()
+        Text(label)
+          .font(.system(size: 20, weight: .semibold))
+          .foregroundColor(isWithNote ? .primaryLabel : .tertiaryLabel)
+          .bold()
+          .padding(12)
+        Spacer()
+      }
+      
+      VStack {
+        Spacer()
+        if isWithNote {
+          Text("Tap to see a hint")
+            .foregroundColor(.tertiaryLabel)
+            .padding(.bottom)
+        }
+      }
     }
+    .frame(width: 320, height: 320)
   }
 }
 

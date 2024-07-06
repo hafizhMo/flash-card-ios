@@ -8,12 +8,6 @@
 import SwiftUI
 import SwiftData
 
-enum DetailState: String {
-  case create = "Create"
-  case edit = "Edit"
-  case detail = "Detail"
-}
-
 struct DetailSpellScreen: View {
   @Environment(\.modelContext) private var modelContext
   

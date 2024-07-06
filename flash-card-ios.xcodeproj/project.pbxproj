@@ -21,6 +21,9 @@
 		FB57F0612C31B2C800DEF4A0 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57F0602C31B2C800DEF4A0 /* HomeScreen.swift */; };
 		FB57F0632C31B6F700DEF4A0 /* SelectDeckScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57F0622C31B6F700DEF4A0 /* SelectDeckScreen.swift */; };
 		FB57F0652C31B91B00DEF4A0 /* CardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB57F0642C31B91B00DEF4A0 /* CardComponent.swift */; };
+		FB9B57AD2C38FF4900CE6635 /* CardState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57AC2C38FF4900CE6635 /* CardState.swift */; };
+		FB9B57AF2C38FF6A00CE6635 /* DetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57AE2C38FF6A00CE6635 /* DetailState.swift */; };
+		FB9B57B22C39046800CE6635 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57B12C39046800CE6635 /* Colors.swift */; };
 		FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6F2C1C63E000C57D89 /* Spell.swift */; };
 		FBD01B722C1C643900C57D89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B712C1C643900C57D89 /* Deck.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +44,9 @@
 		FB57F0602C31B2C800DEF4A0 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		FB57F0622C31B6F700DEF4A0 /* SelectDeckScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDeckScreen.swift; sourceTree = "<group>"; };
 		FB57F0642C31B91B00DEF4A0 /* CardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponent.swift; sourceTree = "<group>"; };
+		FB9B57AC2C38FF4900CE6635 /* CardState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardState.swift; sourceTree = "<group>"; };
+		FB9B57AE2C38FF6A00CE6635 /* DetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailState.swift; sourceTree = "<group>"; };
+		FB9B57B12C39046800CE6635 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FBD01B6F2C1C63E000C57D89 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		FBD01B712C1C643900C57D89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +81,7 @@
 		FB05658D2C1848710026DF3A /* flash-card-ios */ = {
 			isa = PBXGroup;
 			children = (
+				FB9B57B32C39047900CE6635 /* Utils */,
 				FB508E9E2C2D5513004B28E3 /* Features */,
 				FB05659C2C1849140026DF3A /* App */,
 				FBD01B6E2C1C63D400C57D89 /* Data */,
@@ -150,11 +157,37 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
-		FBD01B6E2C1C63D400C57D89 /* Data */ = {
+		FB9B57AB2C38FF3000CE6635 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				FB9B57AC2C38FF4900CE6635 /* CardState.swift */,
+				FB9B57AE2C38FF6A00CE6635 /* DetailState.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		FB9B57B02C38FF8100CE6635 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				FBD01B6F2C1C63E000C57D89 /* Spell.swift */,
 				FBD01B712C1C643900C57D89 /* Deck.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FB9B57B32C39047900CE6635 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FB9B57B12C39046800CE6635 /* Colors.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FBD01B6E2C1C63D400C57D89 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FB9B57B02C38FF8100CE6635 /* Model */,
+				FB9B57AB2C38FF3000CE6635 /* Enum */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -229,12 +262,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB9B57AF2C38FF6A00CE6635 /* DetailState.swift in Sources */,
 				FB57F0652C31B91B00DEF4A0 /* CardComponent.swift in Sources */,
 				FB508EA52C2D6A17004B28E3 /* EmptySpellScreen.swift in Sources */,
+				FB9B57B22C39046800CE6635 /* Colors.swift in Sources */,
 				FB508EAC2C2D8263004B28E3 /* DetailDeckScreen.swift in Sources */,
 				FB05658F2C1848710026DF3A /* MainApp.swift in Sources */,
 				FB508EAA2C2D81C2004B28E3 /* EmptyDeckScreen.swift in Sources */,
 				FB57F0632C31B6F700DEF4A0 /* SelectDeckScreen.swift in Sources */,
+				FB9B57AD2C38FF4900CE6635 /* CardState.swift in Sources */,
 				FB508EA12C2D5535004B28E3 /* DetailSpellScreen.swift in Sources */,
 				FB508E9D2C2D511A004B28E3 /* MainScreen.swift in Sources */,
 				FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */,
