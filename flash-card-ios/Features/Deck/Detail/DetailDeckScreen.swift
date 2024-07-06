@@ -6,9 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct DetailDeckScreen: View {
   @Environment(\.modelContext) private var modelContext
+  @Query private var decks: [Deck]
+  @AppStorage("selectedDeck") var selectedDeck = ""
   
   @Bindable var deck: Deck
   @Binding var path : NavigationPath
@@ -50,6 +53,12 @@ struct DetailDeckScreen: View {
           Button("Delete", role: .destructive) {
             modelContext.delete(deck)
             path.removeLast()
+            
+            if let d = decks.first {
+              selectedDeck = d.name
+            } else {
+              selectedDeck = ""
+            }
           }
           Spacer()
         }
@@ -80,6 +89,10 @@ struct DetailDeckScreen: View {
   private func createDeck() {
     let newDeck = Deck(name: name, spells: Array(selectedSpells))
     modelContext.insert(newDeck)
+    
+    if selectedDeck.isEmpty {
+      selectedDeck = name
+    }
     
     name = ""
     selectedSpells = []

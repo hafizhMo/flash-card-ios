@@ -9,35 +9,20 @@ import SwiftUI
 import SwiftData
 
 struct MainScreen: View {
+  @Environment(\.modelContext) private var modelContext
+  
   @State var path = NavigationPath()
   @Query private var allDeck: [Deck]
   @Query private var allSpell: [Spell]
-  @State private var selected = 0
+  
+  @AppStorage("isFirstTime") var isFirstTime = true
+  @AppStorage("selectedDeck") var selectedDeck = ""
   
   var body: some View {
     NavigationStack(path: $path) {
       VStack {
-//        Picker("Content", selection: $selected) {
-//          Text("All Deck").tag(0)
-//          Text("All Spell").tag(1)
-//        }
-//        .pickerStyle(.segmented)
-//        
-//        if selected == 0 {
-//          if allDeck.first != nil {
-//            AllDeckScreen(path: $path)
-//          } else {
-//            EmptyDeckScreen(path: $path)
-//          }
-//        } else {
-//          if allSpell.first != nil {
-//            AllSpellScreen(path: $path)
-//          } else {
-//            EmptySpellScreen(path: $path)
-//          }
-//        }
-        if let deck = allDeck.first {
-          HomeScreen(deck: deck, path: $path)
+        if allDeck.first != nil {
+          HomeScreen(path: $path)
         } else {
           EmptyDeckScreen(path: $path)
         }
@@ -49,6 +34,22 @@ struct MainScreen: View {
       .navigationDestination(for: Deck.self) { deck in
         DetailDeckScreen(deck: deck, path: $path)
       }
+      .onAppear {
+        if isFirstTime && selectedDeck.isEmpty {
+          createDummy()
+          selectedDeck = "dummy"
+          isFirstTime = false
+        }
+      }
     }
+  }
+  
+  private func createDummy() {
+    let spell1 = Spell(name: "1", detail: "satu", notes: "")
+    let spell2 = Spell(name: "2", detail: "dua", notes: "")
+    let spell3 = Spell(name: "3", detail: "tiga", notes: "")
+    
+    let deck = Deck(name: "dummy", spells: [spell1, spell2, spell3])
+    modelContext.insert(deck)
   }
 }

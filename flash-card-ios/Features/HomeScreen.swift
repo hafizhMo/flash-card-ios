@@ -6,13 +6,15 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeScreen: View {
-  @Bindable var deck: Deck
   @Binding var path : NavigationPath
-  @State private var selected: Deck = Deck()
   @State private var state: CardState = .idle
   @State private var isPresented = false
+  @AppStorage("selectedDeck") private var selectedDeck = ""
+  @Query private var allDeck: [Deck]
+  @State private var selected = Deck()
   
   var body: some View {
     VStack {
@@ -76,7 +78,7 @@ struct HomeScreen: View {
       }
     })
     .navigationDestination(for: String.self) { _ in
-      SelectDeckScreen(selected: $selected, state: $state, path: $path)
+      SelectDeckScreen(state: $state, path: $path)
     }
     .navigationDestination(for: Int.self, destination: { code in
       if code == 0 {
@@ -88,8 +90,8 @@ struct HomeScreen: View {
       }
     })
     .onAppear {
-      if selected.name.isEmpty {
-        selected = deck
+      if let selectedDeck = allDeck.first(where: { $0.name == selectedDeck }) {
+        selected = selectedDeck
       }
     }
   }

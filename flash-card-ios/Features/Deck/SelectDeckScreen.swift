@@ -11,9 +11,10 @@ import SwiftData
 struct SelectDeckScreen: View {
   @Query private var allDeck: [Deck]
   
-  @Binding var selected: Deck
   @Binding var state: CardState
   @Binding var path : NavigationPath
+  
+  @AppStorage("selectedDeck") var selectedDeck = ""
   
   var body: some View {
     List {
@@ -21,13 +22,14 @@ struct SelectDeckScreen: View {
         HStack {
           Text(deck.name)
           Spacer()
-          if selected.name == deck.name {
+          if selectedDeck == deck.name {
             Image(systemName: "checkmark").foregroundColor(.accentColor)
           }
         }
+        .background(Color.primaryBackground)
         .onTapGesture {
           state = .reset
-          selected = deck
+          selectedDeck = deck.name
           path.removeLast()
         }
       }
