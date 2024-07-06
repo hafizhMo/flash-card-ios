@@ -49,14 +49,10 @@ struct SwipeCard: View {
         DragGesture()
           .onChanged { gesture in
             offset = gesture.translation
-            withAnimation {
-              //              changeColor(width: offset.width)
-            }
           }
           .onEnded { _ in
             withAnimation {
               swipeCard(width: offset.width)
-              //              changeColor(width: offset.width)
             }
           }
       )
@@ -101,6 +97,9 @@ struct FlipCard: View {
   @State private var flipped = false
   var front: String
   var back: String
+  private var initialDegree: Double {
+    Double.random(in: -7.5...7.5)
+  }
   
   var body: some View {
     let flipDegrees = flipped ? 180.0 : 0
@@ -113,6 +112,7 @@ struct FlipCard: View {
         CardView(label: back, textColor: .white, backgroundColor: .secondaryCardBackground)
           .flipRotate(-180 + flipDegrees).opacity(flipped ? 1.0 : 0.0)
       }
+      .rotationEffect(.degrees(initialDegree))
       .onTapGesture {
         withAnimation {
           self.flipped.toggle()
