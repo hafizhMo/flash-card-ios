@@ -9,13 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct HomeScreen: View {
-  @Binding var path : NavigationPath
-  @State private var state: CardState = .idle
-  @State private var isPresented = false
+  @EnvironmentObject var router: Router
+  
   @AppStorage("selectedDeck") private var selectedDeck = ""
+  
   @Query private var allDeck: [Deck]
+  
+  @State private var state: CardState = .idle
   @State private var selected = Deck()
-  @State private var position = false
   
   var body: some View {
     VStack {
@@ -47,7 +48,7 @@ struct HomeScreen: View {
         }
         
         Button {
-          path.append("pick")
+          router.navigate(to: .selectDeck)
         } label: {
           Image(systemName: "list.bullet.indent")
             .resizable()
@@ -58,7 +59,7 @@ struct HomeScreen: View {
         }
         
         Button {
-          isPresented.toggle()
+          router.navigate(to: .manage)
         } label: {
           Image(systemName: "menucard")
             .resizable()
@@ -70,26 +71,11 @@ struct HomeScreen: View {
       }
       Spacer()
     }
-    .confirmationDialog("", isPresented: $isPresented, titleVisibility: .hidden, actions: {
-      Button("Manage deck") {
-        path.append(0)
-        position = true
-      }
-      Button("Manage spell") {
-        path.append(1)
-        position = false
-      }
-    })
-    .navigationDestination(for: String.self) { _ in
-      SelectDeckScreen(state: $state, path: $path)
-    }
-    .navigationDestination(for: Int.self, destination: { code in
-      ManageScreen(toggle: $position, path: $path)
-    })
     .onAppear {
       if let selectedDeck = allDeck.first(where: { $0.name == selectedDeck }) {
         selected = selectedDeck
       }
+      state = .reset
     }
   }
 }

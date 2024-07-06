@@ -25,6 +25,7 @@
 		FB9B57AF2C38FF6A00CE6635 /* DetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57AE2C38FF6A00CE6635 /* DetailState.swift */; };
 		FB9B57B22C39046800CE6635 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57B12C39046800CE6635 /* Colors.swift */; };
 		FB9B57B72C393BC700CE6635 /* ManageScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57B62C393BC700CE6635 /* ManageScreen.swift */; };
+		FB9B57D62C39ADA800CE6635 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9B57D52C39ADA800CE6635 /* Router.swift */; };
 		FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B6F2C1C63E000C57D89 /* Spell.swift */; };
 		FBD01B722C1C643900C57D89 /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD01B712C1C643900C57D89 /* Deck.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		FB9B57AE2C38FF6A00CE6635 /* DetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailState.swift; sourceTree = "<group>"; };
 		FB9B57B12C39046800CE6635 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FB9B57B62C393BC700CE6635 /* ManageScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageScreen.swift; sourceTree = "<group>"; };
+		FB9B57D52C39ADA800CE6635 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		FBD01B6F2C1C63E000C57D89 /* Spell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spell.swift; sourceTree = "<group>"; };
 		FBD01B712C1C643900C57D89 /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,11 +85,11 @@
 		FB05658D2C1848710026DF3A /* flash-card-ios */ = {
 			isa = PBXGroup;
 			children = (
-				FB9B57B32C39047900CE6635 /* Utils */,
-				FB508E9E2C2D5513004B28E3 /* Features */,
 				FB05659C2C1849140026DF3A /* App */,
 				FBD01B6E2C1C63D400C57D89 /* Data */,
+				FB508E9E2C2D5513004B28E3 /* Features */,
 				FB05659D2C18491E0026DF3A /* Resources */,
+				FB9B57B32C39047900CE6635 /* Utils */,
 			);
 			path = "flash-card-ios";
 			sourceTree = "<group>";
@@ -105,6 +107,7 @@
 			children = (
 				FB05658E2C1848710026DF3A /* MainApp.swift */,
 				FB508E9C2C2D511A004B28E3 /* MainScreen.swift */,
+				FB9B57D52C39ADA800CE6635 /* Router.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				FB57F0632C31B6F700DEF4A0 /* SelectDeckScreen.swift in Sources */,
 				FB9B57AD2C38FF4900CE6635 /* CardState.swift in Sources */,
 				FB508EA12C2D5535004B28E3 /* DetailSpellScreen.swift in Sources */,
+				FB9B57D62C39ADA800CE6635 /* Router.swift in Sources */,
 				FB508E9D2C2D511A004B28E3 /* MainScreen.swift in Sources */,
 				FBD01B702C1C63E000C57D89 /* Spell.swift in Sources */,
 				FB508EA32C2D6963004B28E3 /* AllSpellScreen.swift in Sources */,

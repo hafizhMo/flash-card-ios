@@ -9,30 +9,34 @@ import SwiftUI
 import SwiftData
 
 struct MainScreen: View {
-  @Environment(\.modelContext) private var modelContext
+  @Environment(\.modelContext) var modelContext
+  @EnvironmentObject var router: Router
   
-  @State var path = NavigationPath()
+  @AppStorage("isFirstTime") private var isFirstTime = true
+  @AppStorage("selectedDeck") private var selectedDeck = ""
+  
   @Query private var allDeck: [Deck]
-  @Query private var allSpell: [Spell]
-  
-  @AppStorage("isFirstTime") var isFirstTime = true
-  @AppStorage("selectedDeck") var selectedDeck = ""
   
   var body: some View {
-    NavigationStack(path: $path) {
+    NavigationStack(path: $router.navPath) {
       VStack {
         if allDeck.first != nil {
-          HomeScreen(path: $path)
+          HomeScreen()
         } else {
-          EmptyDeckScreen(path: $path)
+          EmptyDeckScreen()
         }
       }
-      .padding()
-      .navigationDestination(for: Spell.self) { spell in
-        DetailSpellScreen(spell: spell, path: $path)
-      }
-      .navigationDestination(for: Deck.self) { deck in
-        DetailDeckScreen(deck: deck, path: $path)
+      .navigationDestination(for: Router.Destination.self) { destination in
+        switch destination {
+        case .selectDeck:
+          SelectDeckScreen()
+        case .detailDeck(let deck):
+          DetailDeckScreen(deck: deck)
+        case .detailSpell(let spell):
+          DetailSpellScreen(spell: spell)
+        case .manage:
+          ManageScreen()
+        }
       }
       .onAppear {
         if isFirstTime && selectedDeck.isEmpty {

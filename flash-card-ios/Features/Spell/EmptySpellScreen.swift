@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct EmptySpellScreen: View {
-  @Binding var path : NavigationPath
+  @EnvironmentObject var router: Router
+  
   var body: some View {
     VStack {
       Spacer()
       HStack {
         Text("No spell yet.")
         Button("Create a new one.") {
-          path.append(Spell())
+          router.navigate(to: .detailSpell(spell: Spell()))
         }
       }
       Spacer()

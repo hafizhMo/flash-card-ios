@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct EmptyDeckScreen: View {
-  @Binding var path : NavigationPath
+  @EnvironmentObject var router: Router
+  
   var body: some View {
     VStack {
       Spacer()
       HStack {
         Text("No deck yet.")
         Button("Create a new one.") {
-          path.append(Deck())
+          router.navigate(to: .detailDeck(deck: Deck()))
         }
       }
       Spacer()

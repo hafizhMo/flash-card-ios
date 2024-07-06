@@ -9,10 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct DetailSpellScreen: View {
-  @Environment(\.modelContext) private var modelContext
+  @Environment(\.modelContext) var modelContext
+  @EnvironmentObject var router: Router
   
   @Bindable var spell: Spell
-  @Binding var path : NavigationPath
   
   @State private var state: DetailState = .detail
   @State private var name = ""
@@ -39,7 +39,7 @@ struct DetailSpellScreen: View {
           Spacer()
           Button("Delete", role: .destructive) {
             modelContext.delete(spell)
-            path.removeLast()
+            router.navigateBack()
           }
           Spacer()
         }

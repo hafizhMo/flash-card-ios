@@ -10,21 +10,22 @@ import SwiftData
 
 struct AllSpellScreen: View {
   @Environment(\.modelContext) var modelContext
-  @Query private var allSpell: [Spell]
+  @EnvironmentObject var router: Router
   
-  @Binding var path : NavigationPath
+  @Query private var allSpell: [Spell]
   
   var body: some View {
     VStack(spacing:0) {
       List {
         ForEach(allSpell) { spell in
-          NavigationLink(spell.name, value: spell)
-        }
-        .onDelete(perform: deleteSpell)
+          Button {
+            router.navigate(to: .detailSpell(spell: spell))
+          } label: { Text(spell.name) }
+        }.onDelete(perform: deleteSpell)
       }
       
       Button("Create another spell") {
-        path.append(Spell())
+        router.navigate(to: .detailSpell(spell: Spell()))
       }
       .padding()
     }

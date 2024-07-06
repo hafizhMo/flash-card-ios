@@ -10,10 +10,12 @@ import SwiftData
 
 @main
 struct MainApp: App {
+  @ObservedObject var router = Router()
   
   var body: some Scene {
     WindowGroup {
       MainScreen()
+        .environmentObject(router)
         .modelContainer(for: Deck.self)
     }
   }

@@ -10,33 +10,31 @@ import SwiftData
 
 struct AllDeckScreen: View {
   @Environment(\.modelContext) var modelContext
-  @Query private var allDeck: [Deck]
+  @EnvironmentObject var router: Router
   
-  @Binding var path : NavigationPath
+  @Query private var allDeck: [Deck]
   
   var body: some View {
     VStack(spacing:0) {
       List {
         ForEach(allDeck) { deck in
-          NavigationLink(deck.name, value: deck)
-        }
-        .onDelete(perform: deleteDeck)
+          Button {
+            router.navigate(to: .detailDeck(deck: deck))
+          } label: { Text(deck.name) }
+        }.onDelete(perform: deleteDeck)
       }
       
       Button("Create another deck") {
-        path.append(Deck())
-      }
-      .padding()
-    }
-    .onAppear {
-      print("alldeck")
+        router.navigate(to: .detailDeck(deck: Deck()))
+      }.padding()
     }
   }
   
-  func deleteDeck(at offsets: IndexSet) {
+  private func deleteDeck(at offsets: IndexSet) {
     for offset in offsets {
       let deck = allDeck[offset]
       modelContext.delete(deck)
     }
   }
+  
 }

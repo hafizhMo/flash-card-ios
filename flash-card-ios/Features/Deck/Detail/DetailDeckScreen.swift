@@ -9,15 +9,17 @@ import SwiftUI
 import SwiftData
 
 struct DetailDeckScreen: View {
-  @Environment(\.modelContext) private var modelContext
+  @Environment(\.modelContext) var modelContext
+  @EnvironmentObject var router: Router
+  
+  @AppStorage("selectedDeck") private var selectedDeck = ""
+  
   @Query private var decks: [Deck]
-  @AppStorage("selectedDeck") var selectedDeck = ""
   
   @Bindable var deck: Deck
-  @Binding var path : NavigationPath
   
-  @State private var state: DetailState = .detail
   @State private var name = ""
+  @State private var state: DetailState = .detail
   @State private var selectedSpells: Set<Spell> = []
   
   var body: some View {
@@ -55,10 +57,10 @@ struct DetailDeckScreen: View {
             
             if let d = decks.first {
               selectedDeck = d.name
-              path.removeLast()
+              router.navigateBack()
             } else {
               selectedDeck = ""
-              path.removeLast(path.count)
+              router.navigateToRoot()
             }
           }
           Spacer()

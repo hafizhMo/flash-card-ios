@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ManageScreen: View {
-  @Binding var toggle: Bool
-  @Binding var path: NavigationPath
+  @EnvironmentObject var router: Router
+  
+  @State private var listState: Bool = true
   
   var body: some View {
     VStack(spacing: 0) {
@@ -17,47 +18,47 @@ struct ManageScreen: View {
         ZStack(alignment: .topLeading) {
           HStack(alignment: .top) {
             VStack(alignment: .leading, spacing: 8) {
-              if !toggle {
+              if !listState {
                 Text("..").foregroundColor(.clear)
               }
               
               Button {
                 withAnimation(.easeInOut(duration: 0.7)) {
-                  toggle.toggle()
+                  listState.toggle()
                 }
               } label: {
                 Text("All Spell")
-                  .font(!toggle ? .largeTitle : .none)
-                  .fontWeight(!toggle ? .bold : .regular)
-                  .foregroundColor(!toggle ? .black : .blue)
-                  .disabled(!toggle)
+                  .font(!listState ? .largeTitle : .none)
+                  .fontWeight(!listState ? .bold : .regular)
+                  .foregroundColor(!listState ? .black : .blue)
+                  .disabled(!listState)
               }
             }
             
             Spacer()
             
             VStack(alignment: .trailing, spacing: 8) {
-              if toggle {
+              if listState {
                 Text("..").foregroundColor(.clear)
               }
               
               Button {
                 withAnimation(.easeInOut(duration: 0.7)) {
-                  toggle.toggle()
+                  listState.toggle()
                 }
               } label: {
                 Text("All Deck")
-                  .font(toggle ? .largeTitle : .none)
-                  .fontWeight(toggle ? .bold : .regular)
-                  .foregroundColor(toggle ? .black : .blue)
-                  .disabled(toggle)
+                  .font(listState ? .largeTitle : .none)
+                  .fontWeight(listState ? .bold : .regular)
+                  .foregroundColor(listState ? .black : .blue)
+                  .disabled(listState)
               }
             }
           }
-          .environment(\.layoutDirection, toggle ? .rightToLeft : .leftToRight)
+          .environment(\.layoutDirection, listState ? .rightToLeft : .leftToRight)
           
           Button {
-            path.removeLast()
+            router.navigateBack()
           } label: {
             Image(systemName: "chevron.left")
             Text("Back")
@@ -67,10 +68,10 @@ struct ManageScreen: View {
       }
       .background(Color.manageToolbar)
       
-      if toggle {
-        AllDeckScreen(path: $path)
+      if listState {
+        AllDeckScreen()
       } else {
-        AllSpellScreen(path: $path)
+        AllSpellScreen()
       }
     }
     .navigationBarBackButtonHidden()
