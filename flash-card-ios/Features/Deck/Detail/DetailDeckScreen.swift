@@ -52,12 +52,13 @@ struct DetailDeckScreen: View {
           Spacer()
           Button("Delete", role: .destructive) {
             modelContext.delete(deck)
-            path.removeLast()
             
             if let d = decks.first {
               selectedDeck = d.name
+              path.removeLast()
             } else {
               selectedDeck = ""
+              path.removeLast(path.count)
             }
           }
           Spacer()

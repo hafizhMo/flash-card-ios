@@ -28,6 +28,9 @@ struct AllDeckScreen: View {
       }
       .padding()
     }
+    .onAppear {
+      print("alldeck")
+    }
   }
   
   func deleteDeck(at offsets: IndexSet) {
