@@ -19,7 +19,13 @@ struct SelectDeckScreen: View {
     List {
       ForEach(allDeck) { deck in
         HStack {
-          Text(deck.name)
+          VStack(alignment: .leading, spacing: 8) {
+            Text(deck.name)
+              .foregroundColor(.primaryLabel)
+            Text("total: \(deck.spells.count) spell(s)")
+              .font(.system(size: 12))
+              .foregroundColor(.secondaryLabel)
+          }
           
           Spacer()
           
